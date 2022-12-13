@@ -9,7 +9,7 @@ import {
 function BarChartMonthlyFee(props){
     const [monthly_fee,setMF] = useState(10)
     useEffect(async()=>{
-        let api = await fetch(`http://localhost:8000/monthly_fee`)
+        let api = await fetch(`http://http://35.193.47.255//monthly_fee`)
         api = await api.json()
         setMF(api['data'])
     })

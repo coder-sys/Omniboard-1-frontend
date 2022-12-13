@@ -1,5 +1,4 @@
 {
-	"homepage": "http://coder-sys.github.io/-ESPARK-",
 	"name": "ESPARK",
 	"version": "0.1.0",
 	"private": true,
@@ -11,6 +10,7 @@
 		"gapi-script": "^1.2.0",
 		"gh-pages": "^4.0.0",
 		"react": "^17.0.2",
+		"react-device-detect": "^2.2.2",
 		"react-dom": "^17.0.2",
 		"react-google-login": "^5.2.2",
 		"react-icons": "^3.10.0",
@@ -28,8 +28,6 @@
 		"web-vitals": "^1.0.1"
 	},
 	"scripts": {
-		"predeploy":"npm run build",
-		"deploy":"gh-pages -d build",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",

@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Container, MainHeading } from '../../globalStyles';
 import { HeroVideo, HeroSection, HeroText, ButtonWrapper, HeroButton } from './HeroStyles';
-
+import { FormSection } from '../Form/FormStyles';
 const HeroInformation = () => {
 	return (
+		<FormSection>
 		<HeroSection>
-			<HeroVideo src="./assets/hero.mp4" loop autoPlay muted />
 			<Container>
 				<HeroText>
                 ESPARK is a product that belongs to AFD Enterprises' NGO division. It is a web application that allows students and enthusiasts to learn <br></br>
@@ -19,6 +19,7 @@ const HeroInformation = () => {
             <img src='./assets/afdenterpriseslogoregular.PNG' style={{marginLeft:'45%','width':'90px','height':'90px',borderRadius:10}} />
 
 		</HeroSection>
+		</FormSection>
 	);
 };
 

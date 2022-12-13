@@ -18,7 +18,7 @@ const [date_err,setDR] = useState(0)
   
   
 const UE = async()=>{
-	let date_error = await fetch(`http://localhost:8000/date_subtraction_for_paid_version`)
+	let date_error = await fetch(`http://35.193.47.255/date_subtraction_for_paid_version`)
 	date_error = await date_error.json()
 	console.log('date err',date_error['data'])
 	setDR(date_error['data'])
