@@ -125,7 +125,7 @@ if(user_type=='student'){
         img: './assets/svg/Deal.svg',
         start: 'true',
         df:()=>Delete(data),
-        vf:()=>window.location.replace(`http://localhost:3000/foldercontent/${name}/${data}/${user_type}`),
+        vf:()=>window.location.replace(`http://espark-afd-enterprises.uc.r.appspot.com/foldercontent/${name}/${data}/${user_type}`),
         gdt:jsonified_data['google'][index],
         ydt:jsonified_data['youtube'][index]
       };
@@ -135,7 +135,7 @@ if(user_type=='student'){
     }
 		</>
 	)}else{
-    window.location.replace('http://localhost:3000/errorpage')
+    window.location.replace('http://espark-afd-enterprises.uc.r.appspot.com/errorpage')
   }
 }
   if(user_type=='teacher'){
@@ -157,7 +157,7 @@ if(user_type=='student'){
       </div>
       </>
     )}else{
-      window.location.replace('http://localhost:3000/errorpage')
+      window.location.replace('http://espark-afd-enterprises.uc.r.appspot.com/errorpage')
     }
   }
 
@@ -175,7 +175,7 @@ if(user_type=='student'){
       imgStart: 'start',
       img: './assets/svg/Deal.svg',
       start: 'true',
-      vf:()=>window.open('http://localhost:3000/homepage/'+name+'/adminteacherlist')
+      vf:()=>window.open('http://espark-afd-enterprises.uc.r.appspot.com/homepage/'+name+'/adminteacherlist')
     }
     const heroTwo = {
       reverse: true,
@@ -189,7 +189,7 @@ if(user_type=='student'){
       imgStart: 'start',
       img: './assets/svg/Deal.svg',
       start: 'true',
-      vf:()=>window.open('http://localhost:3000/homepage/'+name+'/teacher')
+      vf:()=>window.open('http://espark-afd-enterprises.uc.r.appspot.com/homepage/'+name+'/teacher')
     }
     console.log(teacher_data)
     if(date_err<30){
@@ -201,7 +201,7 @@ if(user_type=='student'){
 
     </>)
   }else{
-    window.location.replace('http://localhost:3000/payments')
+    window.location.replace('http://espark-afd-enterprises.uc.r.appspot.com/payments')
   }
 }
   if(user_type=='adminteacherlist'){
@@ -219,7 +219,7 @@ if(user_type=='student'){
       </div>
     )}
     else{
-      window.location.replace('http://localhost:3000/errorpage')
+      window.location.replace('http://espark-afd-enterprises.uc.r.appspot.com/errorpage')
 
     }
   }

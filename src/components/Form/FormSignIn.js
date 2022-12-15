@@ -41,7 +41,7 @@ const FormSignIn = () => {
 		if(user_type == 'teacher' || user_type == 'student'){
 			let api = await fetch(`http://35.193.47.255/sign_in/${firstname}/${lastname}/${__password__}/${__email__}/${user_type}`)
 			let api_json = await api.json()
-			window.location.replace('http://localhost:3000/login')
+			window.location.replace('http://espark-afd-enterprises.uc.r.appspot.com/login')
 			return api_json
 			}
 			else{alert('Use PISD email to sign in')}

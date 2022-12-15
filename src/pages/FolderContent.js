@@ -33,7 +33,7 @@ if(date_err<30){
 		</>
 	);}
 	else{
-		window.location.replace(`http://localhost:3000/errorpage`)
+		window.location.replace(`http://espark-afd-enterprises.uc.r.appspot.com/errorpage`)
 	}
 };
 

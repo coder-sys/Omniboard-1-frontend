@@ -23,7 +23,7 @@ const CarouselStoredData = (props) => {
 				<Heading width="auto" inverse>
 					{props.SDoM}
 				</Heading>
-				<a href={`http://localhost:3000/homepage/${props.name}/${props.ut}`}><div><b><i>BACK</i></b></div></a>
+				<a href={`http://espark-afd-enterprises.uc.r.appspot.com/homepage/${props.name}/${props.ut}`}><div><b><i>BACK</i></b></div></a>
 				<ButtonContainer>
 					<IconContext.Provider value={{ size: '3rem', color: '#1d609c' }}>
 						<div style={{opacity:0}}>
@@ -63,9 +63,9 @@ const CarouselStoredData = (props) => {
 			</TextWrapper>
 			<TextWrapper>
 			<CardButton onClick={async()=>{ 
-                        let emailandlastname = await fetch(`http://localhost:8000/get_last_name_and_email/${props.name}`)
+                        let emailandlastname = await fetch(`http://35.193.47.255/get_last_name_and_email/${props.name}`)
                         emailandlastname = await emailandlastname.json()
-                        let api= await fetch(`http://localhost:8000/delete_saved_data/${props.name+emailandlastname['lastname']+emailandlastname['email']}/${props.foldername}/${data['name']}`)
+                        let api= await fetch(`http://35.193.47.255/delete_saved_data/${props.name+emailandlastname['lastname']+emailandlastname['email']}/${props.foldername}/${data['name']}`)
                         api = await api.json()
                         props.setue(props.update_effect+1)
             }}
@@ -93,9 +93,9 @@ const CarouselStoredData = (props) => {
 
 			<TextWrapper>
 			<CardButton onClick={async()=>{ 
-                        let emailandlastname = await fetch(`http://localhost:8000/get_last_name_and_email/${props.name}`)
+                        let emailandlastname = await fetch(`http://35.193.47.255/get_last_name_and_email/${props.name}`)
                         emailandlastname = await emailandlastname.json()
-                        let api= await fetch(`http://localhost:8000/delete_saved_data/${props.name+emailandlastname['lastname']+emailandlastname['email']}/${props.foldername}/${data['name']}`)
+                        let api= await fetch(`http://35.193.47.255/delete_saved_data/${props.name+emailandlastname['lastname']+emailandlastname['email']}/${props.foldername}/${data['name']}`)
                         api = await api.json()
                         props.setue(props.update_effect+1)
             }}

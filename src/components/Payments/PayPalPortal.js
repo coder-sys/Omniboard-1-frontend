@@ -10,13 +10,13 @@ const PayPalPortal = async()=>{
 }}
 amount='10'
 onSuccess={async(details, data) => {
-    let api = await fetch(`http://localhost:8000/store_timestamp_for_paid_version`)
+    let api = await fetch(`http://35.193.47.255/store_timestamp_for_paid_version`)
     api = await api.json()
     console.log(api.data)
    
   console.log({ details, data, });
   console.log(details.payer.name.given_name )
-  window.location.replace('http://localhost:3000/homepage/admin/admin')
+  window.location.replace('http://espark-afd-enterprises.uc.r.appspot.com/homepage/admin/admin')
 }}
 />
 
