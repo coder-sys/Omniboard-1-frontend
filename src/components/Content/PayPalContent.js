@@ -42,7 +42,7 @@ import {
 				y: 0,
 			});
 		}
-		var api = await fetch(`http://35.193.47.255/monthly_fee`)
+		var api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/monthly_fee`)
 		api = await api.json()
 		SF(api['data_str'])
 	}, [inView, animation]);
@@ -72,14 +72,14 @@ import {
 }}
 amount={fee}
 onSuccess={async(details, data) => {
-    let api = await fetch(`http://35.193.47.255/store_timestamp_for_paid_version`)
+    let api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/store_timestamp_for_paid_version`)
     api = await api.json()
     console.log(api.data)
-   let date_update = await fetch(`http://35.193.47.255/store_timestamp_for_paid_version`)
+   let date_update = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/store_timestamp_for_paid_version`)
    date_update = await date_update.json()
   console.log({ details, data, });
   console.log(details.payer.name.given_name )
-  window.location.replace('http://espark-afd-enterprises.uc.r.appspot.com/homepage/admin/admin')
+  window.location.replace('https://espark-afd-enterprises.uc.r.appspot.com/homepage/admin/admin')
 }}
 /></Container>
                 

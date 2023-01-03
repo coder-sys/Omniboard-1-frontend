@@ -88,15 +88,15 @@ const FormHomepage = (props) => {
 
 							<FormButton onClick={async()=>{
             
-                                    let emailandlastname = await fetch(`http://35.193.47.255/get_last_name_and_email/${props.name}`)
+                                    let emailandlastname = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/get_last_name_and_email/${props.name}`)
                                     emailandlastname = await emailandlastname.json()
-                                              let api = await fetch(`http://35.193.47.255/add_folder/${props.name+emailandlastname['lastname']+emailandlastname['email']}/${props.folderfield}`)
+                                              let api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/add_folder/${props.name+emailandlastname['lastname']+emailandlastname['email']}/${props.folderfield}`)
                                               api = await api.json()
                                               console.log(api)
                                     
                                               props.setFolderField("");
                                                 props.setUpdated();
-                                                let ufa = await fetch(`http://35.193.47.255/update_no_of_folders/${props.name}`)
+                                                let ufa = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/update_no_of_folders/${props.name}`)
                                                 ufa = await ufa.json()
                                             }} type="submit">Create Folder to store your internet research</FormButton>
                            

@@ -55,7 +55,7 @@ const CarouselStudentData = (props) => {
 				<div>{"firstname: "+data['firstname']}</div><br></br>
 				<div>{"lastname: "+data['lastname']}</div><br></br>
 				<div>{"Number of Folders: "+data['no_of_folders']}</div><br></br>
-				<CardButton onClick={()=>window.open(`http://espark-afd-enterprises.uc.r.appspot.com/homepage/${data['firstname']}/student`)}>View </CardButton>
+				<CardButton onClick={()=>window.open(`https://espark-afd-enterprises.uc.r.appspot.com/homepage/${data['firstname']}/student`)}>View </CardButton>
 				</ul>
 			</TextWrapper>
 			

@@ -24,9 +24,9 @@ const save_google_data = async(setue,data,update_effect,linkjoin_,retrievegoogle
         stored_data[index] = true
 
     try{    
-    let eal = await fetch(`http://35.193.47.255/get_last_name_and_email/${name}`)
+    let eal = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/get_last_name_and_email/${name}`)
     eal = await eal.json()
-        let api = await fetch(`http://35.193.47.255/add_google_content/${name+lastname+email}/${foldername}/${djoin_.join("")}/${linkjoin_.join("")}/${description[index]}`)
+        let api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/add_google_content/${name+lastname+email}/${foldername}/${djoin_.join("")}/${linkjoin_.join("")}/${description[index]}`)
         api = await api.json()
         console.log(api)
     }

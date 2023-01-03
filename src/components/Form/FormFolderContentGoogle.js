@@ -71,15 +71,15 @@ const FormFolderContentGoogle = (props) => {
 								try{
             props.setUpdated(props.updated+1)
 			props.setue(props.update_effect+1)
-			let api = await fetch(`http://35.193.47.255/get_google_content/${props.googlesearch}`)
+			let api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/get_google_content/${props.googlesearch}`)
 			api = await api.json()
 			console.log(api.names)
 			props.setRetrieveGoogleData1(api.names)
 			props.setRetrieveGoogleData2(api.urls)
 			props.setDescription(api.description)
-			let emailandlastname = await fetch(`http://35.193.47.255/get_last_name_and_email/${props.name}`)
+			let emailandlastname = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/get_last_name_and_email/${props.name}`)
 			emailandlastname = await emailandlastname.json()
-			let lapi = await fetch('http://35.193.47.255/get_stored_links/'+props.name+emailandlastname['lastname']+emailandlastname['email']+'/'+props.foldername)
+			let lapi = await fetch('https://espark-api-proxy.ecsbeats.repl.co/get_stored_links/'+props.name+emailandlastname['lastname']+emailandlastname['email']+'/'+props.foldername)
 			lapi = await lapi.json()
 			props.translateLink(api.urls).then((data)=>{
 				props.translateLink(lapi.data).then(async(data1)=>{
@@ -98,8 +98,8 @@ const FormFolderContentGoogle = (props) => {
 						}
 					})
 					console.log(dt1.join())
-					console.log(`http://35.193.47.255/find_similarity_links/${dt1.join()}/${data1.join()}`)
-					let api = await fetch(`http://35.193.47.255/find_similarity_links/${dt1.join()}/${data1.join()}`)
+					console.log(`https://espark-api-proxy.ecsbeats.repl.co/find_similarity_links/${dt1.join()}/${data1.join()}`)
+					let api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/find_similarity_links/${dt1.join()}/${data1.join()}`)
 					api = await api.json()
 					props.setStoredData(api.data)}catch(err){console.log(err)}
 			})

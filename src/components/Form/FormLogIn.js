@@ -63,9 +63,9 @@ const FormLogIn = (props) => {
 		
 	];
     const loginwithgoogle = async(firstname_google) =>{
-        let api = await fetch(`http://35.193.47.255/login/${firstname_google}`)
+        let api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/login/${firstname_google}`)
         try{
-          let ut = await fetch(`http://35.193.47.255/get_user_type/${firstname_google}`)
+          let ut = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/get_user_type/${firstname_google}`)
                     ut = await ut.json()
                     console.log(ut.data)
                   api = await api.json()
@@ -77,7 +77,7 @@ const FormLogIn = (props) => {
                   if(api['data']!='username not found'){
                     setAccess("Granted")
 					console.log(ut.data)
-                    window.location.replace('http://espark-afd-enterprises.uc.r.appspot.com/homepage/'+firstname_google+'/'+ut.data)
+                    window.location.replace('https://espark-afd-enterprises.uc.r.appspot.com/homepage/'+firstname_google+'/'+ut.data)
                   }
                   else{
                     alert('Username not found')
@@ -108,9 +108,9 @@ const FormLogIn = (props) => {
 
 							<FormButton onClick={async()=>{
 								        try{
-                                            let api = await fetch(`http://35.193.47.255/login/${name}`)
+                                            let api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/login/${name}`)
                                             api = await api.json()
-                                            let ut = await fetch(`http://35.193.47.255/get_user_type/${name}`)
+                                            let ut = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/get_user_type/${name}`)
                                             ut = await ut.json()
                                             console.log(ut.data)
 											
@@ -120,10 +120,10 @@ const FormLogIn = (props) => {
                                             }
                                             if(password == api["data"]){
                                               setAccess("Granted")
-                                              let ut = await fetch(`http://35.193.47.255/get_user_type/${name}`)
+                                              let ut = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/get_user_type/${name}`)
                                                         ut = await ut.json()
                                                         console.log(ut.data)
-														window.location.replace('http://espark-afd-enterprises.uc.r.appspot.com/homepage/'+name+"/"+ut.data)
+														window.location.replace('https://espark-afd-enterprises.uc.r.appspot.com/homepage/'+name+"/"+ut.data)
 
                                               //          props.navigation.navigate('HomePage',{name:fname,user_type:ut.data})
                                             }

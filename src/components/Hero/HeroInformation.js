@@ -16,7 +16,7 @@ const HeroInformation = () => {
                 helps students in creating entrepreneurs because it is built around the user's vision. ESPARK has a vision to help students discover their passion. <br></br>				</HeroText>
 				
 			</Container>
-            <img src='./assets/afdenterpriseslogoregular.PNG' style={{marginLeft:'45%','width':'90px','height':'90px',borderRadius:10}} />
+            <img src='/assets/afdenterpriseslogoregular.PNG' style={{marginLeft:'45%','width':'90px','height':'90px',borderRadius:10}} />
 
 		</HeroSection>
 		</FormSection>

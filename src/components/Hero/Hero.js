@@ -9,7 +9,7 @@ const Hero = () => {
 	if(osName=='iOS'){
 	return (
 		<HeroSection>
-			<HeroIMG src="./assets/techno.png" loop autoPlay muted />
+			<HeroIMG src="/assets/techno.png" loop autoPlay muted />
 			<Container>
 				<MainHeading>Internet research just got easier with <i>ESPARK</i></MainHeading>
 				<HeroText>
@@ -26,7 +26,9 @@ const Hero = () => {
 	else{
 		return(
 		<HeroSection>
-			<HeroVideo src="./assets/hero.mp4" loop autoPlay muted />
+			<HeroVideo loop autoPlay muted>
+				<source src="/assets/hero.mp4" type="video/mp4" />
+			</HeroVideo>
 			<Container>
 				<MainHeading>Internet research just got easier with <i>ESPARK</i></MainHeading>
 				<HeroText>

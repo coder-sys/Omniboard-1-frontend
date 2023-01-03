@@ -7,7 +7,7 @@ const Payments = () => {
         inverse: true,
         
         imgStart: 'start',
-        img: './assets/svg/Deal.svg',
+        img: '/assets/svg/Deal.svg',
         start: 'true',
   }
   
