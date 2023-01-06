@@ -35,7 +35,8 @@ import {
 	const animation = useAnimation();
 	const [fee,SF] = useState(10)
 	const { ref, inView } = useInView({ threshold: 0.2 });
-	useEffect(async() => {
+	useEffect(() => {
+		async function getFee() {
 		if (inView) {
 			animation.start({
 				opacity: 1,
@@ -43,8 +44,11 @@ import {
 			});
 		}
 		var api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/monthly_fee`)
+		console.log(api.text)
 		api = await api.json()
 		SF(api['data_str'])
+	}
+	getFee()
 	}, [inView, animation]);
     return(
       <Section inverse={inverse} ref={ref}>

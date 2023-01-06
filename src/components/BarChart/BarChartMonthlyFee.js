@@ -9,7 +9,7 @@ import {
 function BarChartMonthlyFee(props){
     const [monthly_fee,setMF] = useState(10)
     useEffect(async()=>{
-        let api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/monthley_fee`)
+        let api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/monthly_fee`, {'mode': 'no-cors'})
         api = await api.json()
         setMF(api['data'])
     })
