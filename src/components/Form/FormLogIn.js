@@ -63,9 +63,9 @@ const FormLogIn = (props) => {
 		
 	];
     const loginwithgoogle = async(firstname_google) =>{
-        let api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/login/${firstname_google}`)
+        let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/login/${firstname_google}`)
         try{
-          let ut = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/get_user_type/${firstname_google}`)
+          let ut = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_user_type/${firstname_google}`)
                     ut = await ut.json()
                     console.log(ut.data)
                   api = await api.json()
@@ -108,9 +108,9 @@ const FormLogIn = (props) => {
 
 							<FormButton onClick={async()=>{
 								        try{
-                                            let api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/login/${name}`)
+                                            let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/login/${name}`)
                                             api = await api.json()
-                                            let ut = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/get_user_type/${name}`)
+                                            let ut = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_user_type/${name}`)
                                             ut = await ut.json()
                                             console.log(ut.data)
 											
@@ -120,7 +120,7 @@ const FormLogIn = (props) => {
                                             }
                                             if(password == api["data"]){
                                               setAccess("Granted")
-                                              let ut = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/get_user_type/${name}`)
+                                              let ut = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_user_type/${name}`)
                                                         ut = await ut.json()
                                                         console.log(ut.data)
 														window.location.replace('https://espark-afd-enterprises.uc.r.appspot.com/homepage/'+name+"/"+ut.data)

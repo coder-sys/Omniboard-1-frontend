@@ -10,7 +10,7 @@ function BarChartMonthlyFee(props){
     const [monthly_fee,setMF] = useState(10)
     useEffect(() => {
       async function getFee() {
-        let api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/monthly_fee`)
+        let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/monthly_fee`)
         api = await api.json()
         setMF(api['data'])
       }

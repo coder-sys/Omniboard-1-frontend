@@ -74,9 +74,9 @@ const FormFolderContentConceptualSearch = (props) => {
                                     try{
                                         props.setUpdated(props.updated+1)
 			                            props.setue(props.update_effect+1)
-                                        let emailandlastname = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/get_last_name_and_email/${props.name}`)
+                                        let emailandlastname = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_last_name_and_email/${props.name}`)
                                         emailandlastname = await emailandlastname.json()
-                                        let api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/get_results_on_conceptual_search/${props.conceptsearch}/${props.name+emailandlastname['lastname']+emailandlastname['email']}/${props.foldername}`)
+                                        let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_results_on_conceptual_search/${props.conceptsearch}/${props.name+emailandlastname['lastname']+emailandlastname['email']}/${props.foldername}`)
                                         api = await api.json()
                                         props.setCsResultData(api['data'])
 										api['data'].map((data)=>{

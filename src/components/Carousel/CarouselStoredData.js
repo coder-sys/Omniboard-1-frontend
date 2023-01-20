@@ -63,9 +63,9 @@ const CarouselStoredData = (props) => {
 			</TextWrapper>
 			<TextWrapper>
 			<CardButton onClick={async()=>{ 
-                        let emailandlastname = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/get_last_name_and_email/${props.name}`)
+                        let emailandlastname = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_last_name_and_email/${props.name}`)
                         emailandlastname = await emailandlastname.json()
-                        let api= await fetch(`https://espark-api-proxy.ecsbeats.repl.co/delete_saved_data/${props.name+emailandlastname['lastname']+emailandlastname['email']}/${props.foldername}/${data['name']}`)
+                        let api= await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/delete_saved_data/${props.name+emailandlastname['lastname']+emailandlastname['email']}/${props.foldername}/${data['name']}`)
                         api = await api.json()
                         props.setue(props.update_effect+1)
             }}
@@ -93,9 +93,9 @@ const CarouselStoredData = (props) => {
 
 			<TextWrapper>
 			<CardButton onClick={async()=>{ 
-                        let emailandlastname = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/get_last_name_and_email/${props.name}`)
+                        let emailandlastname = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_last_name_and_email/${props.name}`)
                         emailandlastname = await emailandlastname.json()
-                        let api= await fetch(`https://espark-api-proxy.ecsbeats.repl.co/delete_saved_data/${props.name+emailandlastname['lastname']+emailandlastname['email']}/${props.foldername}/${data['name']}`)
+                        let api= await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/delete_saved_data/${props.name+emailandlastname['lastname']+emailandlastname['email']}/${props.foldername}/${data['name']}`)
                         api = await api.json()
                         props.setue(props.update_effect+1)
             }}

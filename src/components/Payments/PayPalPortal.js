@@ -10,7 +10,7 @@ const PayPalPortal = async()=>{
 }}
 amount='10'
 onSuccess={async(details, data) => {
-    let api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/store_timestamp_for_paid_version`)
+    let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/store_timestamp_for_paid_version`)
     api = await api.json()
     console.log(api.data)
    

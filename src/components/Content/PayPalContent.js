@@ -43,7 +43,7 @@ import {
 				y: 0,
 			});
 		}
-		var api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/monthly_fee`)
+		var api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/monthly_fee`)
 		console.log(api.text)
 		api = await api.json()
 		SF(api['data_str'])
@@ -76,10 +76,10 @@ import {
 }}
 amount={fee}
 onSuccess={async(details, data) => {
-    let api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/store_timestamp_for_paid_version`)
+    let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/store_timestamp_for_paid_version`)
     api = await api.json()
     console.log(api.data)
-   let date_update = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/store_timestamp_for_paid_version`)
+   let date_update = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/store_timestamp_for_paid_version`)
    date_update = await date_update.json()
   console.log({ details, data, });
   console.log(details.payer.name.given_name )

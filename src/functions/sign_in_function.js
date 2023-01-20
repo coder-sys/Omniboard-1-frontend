@@ -1,5 +1,5 @@
 const sign_in_function = async(fname,lname,password,email)=>{
-    let __api__ = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/verify_sign_in_information/${email}/${fname}/${lname}`)
+    let __api__ = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/verify_sign_in_information/${email}/${fname}/${lname}`)
     __api__ = await __api__.json()
     
     let user_type = ''
@@ -14,14 +14,14 @@ const sign_in_function = async(fname,lname,password,email)=>{
       
      try{
       if(user_type == 'teacher' || user_type == 'student' ){
-    let api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/sign_in/${fname}/${lname}/${password}/${email}/${user_type}`)
+    let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/sign_in/${fname}/${lname}/${password}/${email}/${user_type}`)
     let api_json = await api.json()
     window.location.replace('https://espark-afd-enterprises.uc.r.appspot.com/login')
     return api_json
     }
     else{alert('Use PISD email to sign in')}
  //   if(user_type == 'student'){
-   //   let api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/sign_in/${fname}/${lname}/${password}/${email}/${user_type}`)
+   //   let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/sign_in/${fname}/${lname}/${password}/${email}/${user_type}`)
    //   let api_json = await api.json()
   //    window.location.replace('https://espark-afd-enterprises.uc.r.appspot.com/login')
    //   return api_json

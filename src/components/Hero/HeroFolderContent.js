@@ -38,11 +38,11 @@ const HeroFolderContent = (props) => {
       
     const UE = async()=>{
     try{
-    let emailandlastname = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/get_last_name_and_email/${name}`)
+    let emailandlastname = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_last_name_and_email/${name}`)
 emailandlastname = await emailandlastname.json()
 setEmail(emailandlastname['email'])
 setLastName(emailandlastname['lastname'])
-    let lapi = await fetch('https://espark-api-proxy.ecsbeats.repl.co/get_stored_links/'+name+emailandlastname['lastname']+emailandlastname['email']+'/'+foldername)
+    let lapi = await fetch('https://espark-apis-tndx3hr7aq-uc.a.run.app/get_stored_links/'+name+emailandlastname['lastname']+emailandlastname['email']+'/'+foldername)
     lapi = await lapi.json()
     console.log(lapi)
     setLinkarray(lapi.data)
@@ -60,12 +60,12 @@ setLastName(emailandlastname['lastname'])
     catch(err){
         console.log(err)
     }
-    let emailandlastname = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/get_last_name_and_email/${name}`)
+    let emailandlastname = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_last_name_and_email/${name}`)
     emailandlastname = await emailandlastname.json()
     setEmail(emailandlastname['email'])
     setLastName(emailandlastname['lastname'])
 
-                      let api = await fetch(`https://espark-api-proxy.ecsbeats.repl.co/load_data/${name+emailandlastname['lastname']+emailandlastname['email']}/${foldername}`)
+                      let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/load_data/${name+emailandlastname['lastname']+emailandlastname['email']}/${foldername}`)
                       api = await api.json()
                       console.log(api.data)
                        setStored_dataArray(api.data)
