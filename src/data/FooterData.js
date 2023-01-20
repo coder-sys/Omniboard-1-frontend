@@ -41,6 +41,6 @@ export const footerData = [
 	},
 	{
 		title: 'Legal',
-		links: [['Privacy Policy', '/privacy.html'], ['Terms of Service', '/tos.html']],
+		links: [['Privacy Policy', 'https://storage.googleapis.com/espark-public-assets/privacy.html'], ['Terms of Service', 'https://storage.googleapis.com/espark-public-assets/tos.html']],
 	},
 ];
