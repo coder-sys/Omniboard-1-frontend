@@ -20,6 +20,7 @@ export const HeroVideo = styled.video`
 `;
 export const HeroIMG = styled.img`
 	object-fit: cover;
+	filter: brightness(0.3);
 	width: 100%;
 	height: 100%;
 	background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1));
