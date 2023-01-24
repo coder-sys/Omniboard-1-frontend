@@ -26,7 +26,7 @@ function Footer() {
 							ESPARK
 						</FooterLogo>
 						<FooterAddress>
-							9870 broadmoor dr,San Ramon,CA 94583
+							9870 broadmoor dr, San Ramon, CA 94583
 						</FooterAddress>
 
 						<Row align="center" margin="auto  0 0 0" gap="1rem">
@@ -45,15 +45,23 @@ function Footer() {
 					{footerData.map((footerItem, index) => (
 						<FooterLinkItems key={index}>
 							<FooterLinkTitle>{footerItem.title}</FooterLinkTitle>
-							{footerItem.links.map((link, linkIndex) => (
-								<FooterLink key={linkIndex} to="/">
-									{link}
+							{footerItem.links.map(function(link, linkIndex) {
+								if (typeof link === 'string') {
+									return (
+										<FooterLink key={linkIndex} to={link}>
+											{link}
+										</FooterLink>
+									);
+								} else return (
+								<FooterLink key={linkIndex} to={link[1]}>
+									{link[0]}
 								</FooterLink>
-							))}
+								)
+								})}
 						</FooterLinkItems>
 					))}
 				</FooterGrid>
-				<FooterRights>AFD Enterprises NGO Division © 2022</FooterRights>
+				<FooterRights>AFD Enterprises NGO Division © 2023</FooterRights>
 			</FooterWrapper>
 		</Section>
 	);

@@ -26,11 +26,8 @@ function App() {
 				<Route path='/login' exact component={LogIn} />
 				<Route path='/homepage/:name/:ut' exact component={HomePage} />
 				<Route path='/foldercontent/:uname/:foldername/:ut' exact component={FolderContent} />
-
 				<Route path='/payments' exact component={Payments} />
 				<Route path='/errorpage' exact component={ErrorContent} />
-
-
 				<Route path='/errorpage' exact component={ErrorContent} />
 
 			</Switch>
