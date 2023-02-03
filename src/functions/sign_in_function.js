@@ -5,10 +5,10 @@ const sign_in_function = async(fname,lname,password,email)=>{
     let user_type = ''
     let disected_address = email.split('@')[1]
     if(__api__['data'] == 'good to go!'){
-      if(disected_address == 'k12.prosper-isd.net'){
+      if(disected_address == 'k12.prosper-isd.net' || disected_address == 'students.srvusd.net'){
         user_type = 'student'
       }
-      if(disected_address == 'prosper-isd.net'){
+      if(disected_address == 'prosper-isd.net' || disected_address == 'srvusd.net'){
         user_type = 'teacher'
       }
       
