@@ -44,7 +44,7 @@ const FormSignIn = () => {
 			window.location.replace('https://espark-afd-enterprises.uc.r.appspot.com/login')
 			return api_json
 			}
-			else{alert('Use PISD email to sign in')}
+			else{alert('Use school email to sign in')}
 			 
 		  
 			}     else{  
