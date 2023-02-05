@@ -19,7 +19,7 @@ const sign_in_function = async(fname,lname,password,email)=>{
     window.location.replace('https://espark-afd-enterprises.uc.r.appspot.com/login')
     return api_json
     }
-    else{alert('Use PISD email to sign in')}
+    else{alert('Use school email to sign in')}
  //   if(user_type == 'student'){
    //   let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/sign_in/${fname}/${lname}/${password}/${email}/${user_type}`)
    //   let api_json = await api.json()
