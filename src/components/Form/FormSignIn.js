@@ -35,7 +35,7 @@ const FormSignIn = () => {
 		if(disected_address == 'k12.prosper-isd.net' || disected_address == 'students.srvusd.net'){
 		  user_type = 'student'
 		}
-		if(disected_address == 'prosper-isd.net' || disected_address == 'students.srvusd.net'){
+		if(disected_address == 'prosper-isd.net' || disected_address == 'srvusd.net'){
 		  user_type = 'teacher'
 		}
 		if(user_type == 'teacher' || user_type == 'student'){
