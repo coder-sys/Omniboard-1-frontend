@@ -133,6 +133,8 @@ const FormSignIn = () => {
       onSuccess={(res)=>signinwithgoogle(res.profileObj['name'],res.profileObj['givenName'],res.profileObj['googleId'],res.profileObj['email'])}
       onFailure={(res)=>alert('if you are using google to sign in,please try again later',res)}
       isSignedIn={true}
+      	   buttonText={"sign up with google"}
+
 /></div>
 						</FormMessage>
 						{error && (
