@@ -40,7 +40,7 @@ const CarouselStudentData = (props) => {
 				</ButtonContainer>
 			</Row>
 				
-			<ReviewSlider {...sliderSettings(props.jsonified_data.length)} >
+			<ReviewSlider {...sliderSettings(props.jsonified_data.length/2)} ref={setSliderRef}>
 				
 				{
 				props.jsonified_data.map((data, index) => {
