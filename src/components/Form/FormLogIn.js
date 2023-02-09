@@ -142,6 +142,7 @@ const FormLogIn = (props) => {
             onSuccess={(res)=>loginwithgoogle(res.profileObj['name'])}
             onFailure={(res)=>alert('had trouble logging in,please try again')}
            isSignedIn={true}
+	   buttonText={"Login with google"}
       /></div>
 
 						</FormMessage>
