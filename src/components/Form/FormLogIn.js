@@ -26,13 +26,13 @@ const FormLogIn = (props) => {
 	
 	   useEffect(()=>{
 		function start(){
-		  gapi.client.init({
+		  gapi.auth2.init({
 			'clientId':'615921346526-8gs4b74dja97fje48tv2o459a6g7e9ns.apps.googleusercontent.com',
 			scope:''
 		  })
 		}
 		gapi.load('client:auth2',start)
-	  })
+	  },[])
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const resultError = validateForm({ name, password });
