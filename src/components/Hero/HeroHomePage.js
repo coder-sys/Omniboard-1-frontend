@@ -27,36 +27,35 @@ const [student_graph_data,setStudentGraphData] = useState([])
 const [teacher_graph_data,setTeacherGraphData] = useState([])
 const [date_err,setDR] = useState(0)
   const Delete = async(foldername)=>{
-    let emailandlastname = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_last_name_and_email/${name}`)
+    let emailandlastname = await fetch(`http://127.0.0.1:5000/get_last_name_and_email/${name}`)
     emailandlastname = await emailandlastname.json()
-    let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/delete_folder/${name+emailandlastname['lastname']+emailandlastname['email']}/${foldername}`)
+    let api = await fetch(`http://127.0.0.1:5000/delete_folder/${name}/${foldername}`)
     api = await api.json()
     console.log(api.status)
-    let api1 = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_folders/${name+emailandlastname['lastname']+emailandlastname['email']}`)
+    let api1 = await fetch(`http://127.0.0.1:5000/get_folders/${name}`)
   api1 = await api1.json()
   console.log(api.data)
   setFolderData(api1.data)
   console.log(true,name+emailandlastname['lastname']+emailandlastname['email'])
   setUpdated()
-  let api2 = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/delete_no_of_folders/${name}`)
+  let api2 = await fetch(`http://127.0.0.1:5000/delete_no_of_folders/${name}`)
   api2 = await api2.json()
   }
   
 const UE = async()=>{
-  let date_error = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/date_subtraction_for_paid_version`)
+  let date_error = await fetch(`http://127.0.0.1:5000/date_subtraction_for_paid_version`)
   date_error = await date_error.json()
   console.log('date err',date_error['data'])
   setDR(date_error['data'])
   const fetchData_student = async()=>{
-let emailandlastname = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_last_name_and_email/${name}`)
+let emailandlastname = await fetch(`http://127.0.0.1:5000/get_last_name_and_email/${name}`)
 emailandlastname = await emailandlastname.json()
 try{
-let api1 = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_folders/${name+emailandlastname['lastname']+emailandlastname['email']}`)
+let api1 = await fetch(`http://127.0.0.1:5000/get_folders/${name}`)
 api1 = await api1.json()
 console.log(api1.data)
-let statsapi = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_no_of_stored_content/${name+emailandlastname['lastname']+emailandlastname['email']}/${api1.data.join('-')}`)
+let statsapi = await fetch(`http://127.0.0.1:5000/get_no_of_stored_content/${name}/${api1.data.join('-')}`)
 console.log(statsapi.status)
-console.log(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_no_of_stored_content/${name+emailandlastname['lastname']+emailandlastname['email']}/${api1.data.join('-')}`)
 statsapi = await statsapi.json()
 
 try{
@@ -73,9 +72,9 @@ setFolderData(api1.data)
 }catch(err){console.log('you have no folders')}
 }
 const fetchData_teacher = async () =>{
-  let emailandlastname = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_last_name_and_email/${name}`)
+  let emailandlastname = await fetch(`http://127.0.0.1:5000/get_last_name_and_email/${name}`)
 emailandlastname = await emailandlastname.json()
-let student_data_1 = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/view_student_data_alph_order/student`)
+let student_data_1 = await fetch(`http://127.0.0.1:5000/view_student_data_alph_order/student`)
 student_data_1 = await student_data_1.json()
 setStudentData(student_data_1['data'])
 setStudentGraphData(student_data_1['graph_data'])
@@ -83,10 +82,10 @@ console.log(student_data_1['data'])
 
 }
 const fetchData_admin = async () =>{
-  let student_data_1 = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/view_student_data_alph_order/student`)
+  let student_data_1 = await fetch(`http://127.0.0.1:5000/view_student_data_alph_order/student`)
 student_data_1 = await student_data_1.json()
 setStudentGraphData(student_data_1['graph_data'])
-let student_data_2 = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/view_student_data_alph_order/teacher`)
+let student_data_2 = await fetch(`http://127.0.0.1:5000/view_student_data_alph_order/teacher`)
 student_data_2 = await student_data_2.json()
 console.log(student_data_2['data'])
 setTeacherData(student_data_2['data'])
@@ -135,7 +134,7 @@ if(user_type=='student'){
     }
 		</>
 	)}else{
-    window.location.replace('https://espark-afd-enterprises.uc.r.appspot.com/errorpage')
+    window.location.replace('http://localhost:3001/errorpage')
   }
 }
   if(user_type=='teacher'){
@@ -157,7 +156,7 @@ if(user_type=='student'){
       </div>
       </>
     )}else{
-      window.location.replace('https://espark-afd-enterprises.uc.r.appspot.com/errorpage')
+      window.location.replace('http://localhost:3001/errorpage')
     }
   }
 
@@ -175,7 +174,7 @@ if(user_type=='student'){
       imgStart: 'start',
       img: '/assets/svg/Deal.svg',
       start: 'true',
-      vf:()=>window.open('https://espark-afd-enterprises.uc.r.appspot.com/homepage/'+name+'/adminteacherlist')
+      vf:()=>window.open('http://localhost:3001/homepage/'+name+'/adminteacherlist')
     }
     const heroTwo = {
       reverse: true,
@@ -189,7 +188,7 @@ if(user_type=='student'){
       imgStart: 'start',
       img: '/assets/svg/Deal.svg',
       start: 'true',
-      vf:()=>window.open('https://espark-afd-enterprises.uc.r.appspot.com/homepage/'+name+'/teacher')
+      vf:()=>window.open('http://localhost:3001/homepage/'+name+'/teacher')
     }
     console.log(teacher_data)
     if(date_err<30){
@@ -201,7 +200,7 @@ if(user_type=='student'){
 
     </>)
   }else{
-    window.location.replace('https://espark-afd-enterprises.uc.r.appspot.com/payments')
+    window.location.replace('http://localhost:3001/errorpage/payments')
   }
 }
   if(user_type=='adminteacherlist'){
@@ -219,7 +218,7 @@ if(user_type=='student'){
       </div>
     )}
     else{
-      window.location.replace('https://espark-afd-enterprises.uc.r.appspot.com/errorpage')
+      window.location.replace('http://localhost:3001/errorpage')
 
     }
   }

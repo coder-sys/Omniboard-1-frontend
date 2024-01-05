@@ -16,6 +16,7 @@ import {GoogleLogin} from 'react-google-login';
 import {gapi} from 'gapi-script'
 import { Container } from '../../globalStyles';
 import validateForm from './validateForm';
+import Cookies from 'js-cookie';
 
 const FormLogIn = (props) => {
 	const [name, setName] = useState('');
@@ -23,7 +24,13 @@ const FormLogIn = (props) => {
 	const [error, setError] = useState(null);
 	const [success, setSuccess] = useState(null);
     const [access,setAccess] = useState("denied")
-	
+	const setCookie = async(email) => {
+		let api = await fetch(`http://127.0.0.1:5000/set_cookie/${email}`)
+		api = await api.json()
+		
+		Cookies.set('session_id', api['data'], { expires: 7 }); // expires in 7 days
+	  };
+	  
 	   useEffect(()=>{
 		function start(){
 		  gapi.auth2.init({
@@ -62,11 +69,16 @@ const FormLogIn = (props) => {
 		
 	];
     const loginwithgoogle = async(firstname_google) =>{
-        let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/login/${firstname_google}`)
+        
         try{
-          let ut = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_user_type/${firstname_google}`)
+			let preapi3 = await fetch(`http://127.0.0.1:5000/get_last_name_and_email/${firstname_google}`)
+			preapi3 = await preapi3.json()
+		    let preapi2 = await fetch(`http://127.0.0.1:5000/set_cookie/${preapi3.email}`)
+			preapi2 = await preapi2.json()
+			setCookie(preapi3.email)
+          let ut = await fetch(`http://127.0.0.1:5000/get_user_type/${firstname_google}`)
                     ut = await ut.json()
-                    console.log(ut.data)
+					let api = await fetch(`http://127.0.0.1:5000/login/${firstname_google}`)
                   api = await api.json()
                   console.log(password==api['data'])
                   if(api['data'] == "username not found"){
@@ -76,7 +88,13 @@ const FormLogIn = (props) => {
                   if(api['data']!='username not found'){
                     setAccess("Granted")
 					console.log(ut.data)
-                    window.location.replace('https://espark-afd-enterprises.uc.r.appspot.com/homepage/'+firstname_google+'/'+ut.data)
+					
+														if(ut.data=='student'){
+															window.location.replace('http://localhost:3000/folders/'+preapi3['email'])
+														}
+														else{
+															window.location.replace('http://localhost:3001/homepage/'+name+"/"+ut.data)
+															}
                   }
                   else{
                     alert('Username not found')
@@ -107,9 +125,14 @@ const FormLogIn = (props) => {
 
 							<FormButton onClick={async()=>{
 								        try{
-                                            let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/login/${name}`)
+											let preapi3 = await fetch(`http://127.0.0.1:5000/get_last_name_and_email/${name}`)
+											preapi3 = await preapi3.json()
+		    								let preapi2 = await fetch(`http://127.0.0.1:5000/set_cookie/${preapi3.email}`)
+											preapi2 = await preapi2.json()
+											setCookie(preapi3.email)
+                                            let api = await fetch(`http://127.0.0.1:5000/login/${name}`)
                                             api = await api.json()
-                                            let ut = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_user_type/${name}`)
+                                            let ut = await fetch(`http://127.0.0.1:5000/get_user_type/${name}`)
                                             ut = await ut.json()
                                             console.log(ut.data)
 											
@@ -119,12 +142,15 @@ const FormLogIn = (props) => {
                                             }
                                             if(password == api["data"]){
                                               setAccess("Granted")
-                                              let ut = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_user_type/${name}`)
+                                              let ut = await fetch(`http://127.0.0.1:5000/get_user_type/${name}`)
                                                         ut = await ut.json()
                                                         console.log(ut.data)
-														window.location.replace('https://espark-afd-enterprises.uc.r.appspot.com/homepage/'+name+"/"+ut.data)
-
-                                              //          props.navigation.navigate('HomePage',{name:fname,user_type:ut.data})
+														if(ut.data=='student'){
+															window.location.replace('http://localhost:3000/folders/'+preapi3['email'])
+														}
+														else{
+														window.location.replace('http://localhost:3001/homepage/'+name+"/"+ut.data)
+														}
                                             }
                                             else{
                                               alert('Incorrect Password')
