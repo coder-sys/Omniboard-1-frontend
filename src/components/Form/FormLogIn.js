@@ -124,7 +124,7 @@ const FormLogIn = (props) => {
 							))}
 
 							<FormButton onClick={async()=>{
-								        try{
+								        
 											let preapi3 = await fetch(`http://127.0.0.1:5000/get_last_name_and_email/${name}`)
 											preapi3 = await preapi3.json()
 		    								let preapi2 = await fetch(`http://127.0.0.1:5000/set_cookie/${preapi3.email}`)
@@ -155,8 +155,7 @@ const FormLogIn = (props) => {
                                             else{
                                               alert('Incorrect Password')
                                             }
-                                            console.log(access)}
-                                            catch(err){alert('you left the username field or the password field empty')}
+                                            console.log(access)
 
 							}} type="submit">Login In</FormButton>
                             
