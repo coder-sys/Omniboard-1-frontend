@@ -124,7 +124,7 @@ if(user_type=='student'){
         img: '/assets/svg/Deal.svg',
         start: 'true',
         df:()=>Delete(data),
-        vf:()=>window.location.replace(`https://espark-afd-enterprises.uc.r.appspot.com/foldercontent/${name}/${data}/${user_type}`),
+        vf:()=>window.location.replace(`http://localhost:3001/foldercontent/${name}/${data}/${user_type}`),
         gdt:jsonified_data['google'][index],
         ydt:jsonified_data['youtube'][index]
       };
