@@ -16,7 +16,7 @@ import BarChartStudentEnrollment from '../BarChart/BarChartStudentEnrollment';
 
 import { Container } from '../../globalStyles';
 import validateForm from './validateForm';
-
+const DOMAIN = 'http://127.0.0.1:5000'
 const FormStudentQuery = (props) => {
 	const [query, setQuery] = useState('');
 	const [error, setError] = useState(null);
@@ -61,11 +61,11 @@ const FormStudentQuery = (props) => {
 	let select = document.getElementById('param')
 									   console.log(select[select.selectedIndex].text)
 									   setSelectedParam(select[select.selectedIndex].text)
-									   let api = await fetch(`http://127.0.0.1:5000/load_data_by_param/${select[select.selectedIndex].text}`)
+									   let api = await fetch(`${DOMAIN}/load_data_by_param/${select[select.selectedIndex].text}`)
 									   api = await api.json()
 									   console.log(api.data)
 									   setResults(api.data)								   
-let student_data_1 = await fetch(`http://127.0.0.1:5000/view_student_data_alph_order/student`)
+let student_data_1 = await fetch(`${DOMAIN}/view_student_data_alph_order/student`)
 student_data_1 = await student_data_1.json()
 setStudentGraphData(student_data_1['graph_data'])
 
@@ -94,7 +94,7 @@ setStudentGraphData(student_data_1['graph_data'])
 <select onChange={async()=>{let select = document.getElementById('param')
 									   console.log(select[select.selectedIndex].text)
 									   setSelectedParam(select[select.selectedIndex].text)
-									   let api = await fetch(`http://127.0.0.1:5000/load_data_by_param/${select[select.selectedIndex].text}`)
+									   let api = await fetch(`${DOMAIN}/load_data_by_param/${select[select.selectedIndex].text}`)
 									   api = await api.json()
 									   console.log(api.data)
 									   setUpdated(updated+1)

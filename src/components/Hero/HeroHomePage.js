@@ -7,7 +7,9 @@ import { Content } from '../Content/Content';
 import FormStudentQuery from '../Form/FormStudentQuery';
 import CarouselStudentData from '../Carousel/CarouselStudentData';
 import { AdminPageContent } from '../Content/AdminPageContent';
- 
+
+const DOMAIN = 'http://127.0.0.1:5000'
+const SD1 = 'http://localhost:3001'
 const HeroHomePage = (props) => {
     const [sw,setSw] = useState(100)
 const [hw,setHw] = useState(50)
@@ -26,35 +28,36 @@ const [teacher_data,setTeacherData] = useState([])
 const [student_graph_data,setStudentGraphData] = useState([])
 const [teacher_graph_data,setTeacherGraphData] = useState([])
 const [date_err,setDR] = useState(0)
+
   const Delete = async(foldername)=>{
-    let emailandlastname = await fetch(`http://127.0.0.1:5000/get_last_name_and_email/${name}`)
+    let emailandlastname = await fetch(`${DOMAIN}/get_last_name_and_email/${name}`)
     emailandlastname = await emailandlastname.json()
-    let api = await fetch(`http://127.0.0.1:5000/delete_folder/${name}/${foldername}`)
+    let api = await fetch(`${DOMAIN}/delete_folder/${name}/${foldername}`)
     api = await api.json()
     console.log(api.status)
-    let api1 = await fetch(`http://127.0.0.1:5000/get_folders/${name}`)
+    let api1 = await fetch(`${DOMAIN}/get_folders/${name}`)
   api1 = await api1.json()
   console.log(api.data)
   setFolderData(api1.data)
   console.log(true,name+emailandlastname['lastname']+emailandlastname['email'])
   setUpdated()
-  let api2 = await fetch(`http://127.0.0.1:5000/delete_no_of_folders/${name}`)
+  let api2 = await fetch(`${DOMAIN}/delete_no_of_folders/${name}`)
   api2 = await api2.json()
   }
   
 const UE = async()=>{
-  let date_error = await fetch(`http://127.0.0.1:5000/date_subtraction_for_paid_version`)
+  let date_error = await fetch(`${DOMAIN}/date_subtraction_for_paid_version`)
   date_error = await date_error.json()
   console.log('date err',date_error['data'])
   setDR(date_error['data'])
   const fetchData_student = async()=>{
-let emailandlastname = await fetch(`http://127.0.0.1:5000/get_last_name_and_email/${name}`)
+let emailandlastname = await fetch(`${DOMAIN}/get_last_name_and_email/${name}`)
 emailandlastname = await emailandlastname.json()
 try{
-let api1 = await fetch(`http://127.0.0.1:5000/get_folders/${name}`)
+let api1 = await fetch(`${DOMAIN}/get_folders/${name}`)
 api1 = await api1.json()
 console.log(api1.data)
-let statsapi = await fetch(`http://127.0.0.1:5000/get_no_of_stored_content/${name}/${api1.data.join('-')}`)
+let statsapi = await fetch(`${DOMAIN}/get_no_of_stored_content/${name}/${api1.data.join('-')}`)
 console.log(statsapi.status)
 statsapi = await statsapi.json()
 
@@ -72,9 +75,9 @@ setFolderData(api1.data)
 }catch(err){console.log('you have no folders')}
 }
 const fetchData_teacher = async () =>{
-  let emailandlastname = await fetch(`http://127.0.0.1:5000/get_last_name_and_email/${name}`)
+  let emailandlastname = await fetch(`${DOMAIN}/get_last_name_and_email/${name}`)
 emailandlastname = await emailandlastname.json()
-let student_data_1 = await fetch(`http://127.0.0.1:5000/view_student_data_alph_order/student`)
+let student_data_1 = await fetch(`${DOMAIN}/view_student_data_alph_order/student`)
 student_data_1 = await student_data_1.json()
 setStudentData(student_data_1['data'])
 setStudentGraphData(student_data_1['graph_data'])
@@ -82,10 +85,10 @@ console.log(student_data_1['data'])
 
 }
 const fetchData_admin = async () =>{
-  let student_data_1 = await fetch(`http://127.0.0.1:5000/view_student_data_alph_order/student`)
+  let student_data_1 = await fetch(`${DOMAIN}/view_student_data_alph_order/student`)
 student_data_1 = await student_data_1.json()
 setStudentGraphData(student_data_1['graph_data'])
-let student_data_2 = await fetch(`http://127.0.0.1:5000/view_student_data_alph_order/teacher`)
+let student_data_2 = await fetch(`${DOMAIN}/view_student_data_alph_order/teacher`)
 student_data_2 = await student_data_2.json()
 console.log(student_data_2['data'])
 setTeacherData(student_data_2['data'])
@@ -124,7 +127,7 @@ if(user_type=='student'){
         img: '/assets/svg/Deal.svg',
         start: 'true',
         df:()=>Delete(data),
-        vf:()=>window.location.replace(`http://localhost:3001/foldercontent/${name}/${data}/${user_type}`),
+        vf:()=>window.location.replace(`${SD1}/foldercontent/${name}/${data}/${user_type}`),
         gdt:jsonified_data['google'][index],
         ydt:jsonified_data['youtube'][index]
       };
@@ -134,7 +137,7 @@ if(user_type=='student'){
     }
 		</>
 	)}else{
-    window.location.replace('http://localhost:3001/errorpage')
+    window.location.replace(SD1+'/errorpage')
   }
 }
   if(user_type=='teacher'){
@@ -156,7 +159,7 @@ if(user_type=='student'){
       </div>
       </>
     )}else{
-      window.location.replace('http://localhost:3001/errorpage')
+      window.location.replace(SD1+'/errorpage')
     }
   }
 
@@ -174,7 +177,7 @@ if(user_type=='student'){
       imgStart: 'start',
       img: '/assets/svg/Deal.svg',
       start: 'true',
-      vf:()=>window.open('http://localhost:3001/homepage/'+name+'/adminteacherlist')
+      vf:()=>window.open(SD1+'/homepage/'+name+'/adminteacherlist')
     }
     const heroTwo = {
       reverse: true,
@@ -188,7 +191,7 @@ if(user_type=='student'){
       imgStart: 'start',
       img: '/assets/svg/Deal.svg',
       start: 'true',
-      vf:()=>window.open('http://localhost:3001/homepage/'+name+'/teacher')
+      vf:()=>window.open(SD1+'/homepage/'+name+'/teacher')
     }
     console.log(teacher_data)
     if(date_err<30){

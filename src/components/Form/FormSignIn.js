@@ -17,6 +17,8 @@ import {gapi} from 'gapi-script'
 import { Container } from '../../globalStyles';
 import validateForm from './validateForm';
 import sign_in_function from '../../functions/sign_in_function';
+const DOMAIN = 'http://127.0.0.1:5000'
+const SD1 = 'http://localhost:3001'
 const FormSignIn = () => {
 	const [name, setName] = useState('');
 	const [lname, setLname] = useState('')
@@ -26,7 +28,7 @@ const FormSignIn = () => {
 	const [error, setError] = useState(null);
 	const [success, setSuccess] = useState(null);
 	const signinwithgoogle = async(firstname,lastname,__password__,__email__) =>{
-		let __api__ = await fetch(`http://127.0.0.1:5000/verify_sign_in_information/${__email__}/${firstname}/${lastname}`)
+		let __api__ = await fetch(`${DOMAIN}/verify_sign_in_information/${__email__}/${firstname}/${lastname}`)
 	  __api__ = await __api__.json()
 	  let user_type = ''
 	  let disected_address = __email__.split('@')[1]
@@ -39,9 +41,9 @@ const FormSignIn = () => {
 		  user_type = 'teacher'
 		}
 		if(user_type == 'teacher' || user_type == 'student'){
-			let api = await fetch(`http://127.0.0.1:5000/sign_in/${firstname}/${lastname}/${__password__}/${__email__}/${user_type}`)
+			let api = await fetch(`${DOMAIN}/sign_in/${firstname}/${lastname}/${__password__}/${__email__}/${user_type}`)
 			let api_json = await api.json()
-			window.location.replace('http://localhost:3001/login')
+			window.location.replace(SD1+'/login')
 			return api_json
 			}
 			else{alert('Use school email to sign in')}
