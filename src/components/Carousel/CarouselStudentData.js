@@ -13,7 +13,7 @@ import {
 
 	 
 	
-const DOMAIN = 'http://localhost:3000'
+const SD = 'https://espark.afd.enterprises'
 const CarouselStudentData = (props) => {
 	const [sliderRef, setSliderRef] = useState(null);
 	const [show,setShow] = useState(true)
@@ -54,7 +54,7 @@ const CarouselStudentData = (props) => {
 				<div>{"Email:"+data['email']}</div><br></br>
 				<div>{"firstname: "+data['firstname']}</div><br></br>
 				<div>{"lastname: "+data['lastname']}</div><br></br>
-				<CardButton onClick={()=>window.open(`${DOMAIN}/Folders/${data['email']}/`)}>View </CardButton>
+				<CardButton onClick={()=>window.open(`${SD}/Folders/${data['email']}/`)}>View </CardButton>
 				</ul>
 			</TextWrapper>
 			

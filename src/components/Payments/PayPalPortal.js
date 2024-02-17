@@ -1,6 +1,7 @@
 import {PayPalButton} from 'react-paypal-button-v2'
 import React from "react";
-
+const DOMAIN = 'http://15.204.238.234:5000'
+const SD1 = 'https://espark-old.afd.enterprises'
 const PayPalPortal = async()=>{
     return(
 
@@ -10,13 +11,13 @@ const PayPalPortal = async()=>{
 }}
 amount='10'
 onSuccess={async(details, data) => {
-    let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/store_timestamp_for_paid_version`)
+    let api = await fetch(`${DOMAIN}/store_timestamp_for_paid_version`)
     api = await api.json()
     console.log(api.data)
    
   console.log({ details, data, });
   console.log(details.payer.name.given_name )
-  window.location.replace('https://espark-afd-enterprises.uc.r.appspot.com/homepage/admin/admin')
+  window.location.replace(SD1+'/homepage/admin/admin')
 }}
 />
 

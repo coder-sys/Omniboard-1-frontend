@@ -17,9 +17,9 @@ import {gapi} from 'gapi-script'
 import { Container } from '../../globalStyles';
 import validateForm from './validateForm';
 import Cookies from 'js-cookie';
-const DOMAIN = 'http://127.0.0.1:5000'
-const SD = 'http://localhost:3000'
-const SD1 = 'http://localhost:3001'
+const DOMAIN = 'http://15.204.238.234:5000'
+const SD = 'https://espark.afd.enterprises'
+const SD1 = 'https://espark-old.afd.enterprises'
 const FormLogIn = (props) => {
 	const [name, setName] = useState('');
 	const [password, setPassword] = useState('');

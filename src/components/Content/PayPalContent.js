@@ -18,6 +18,8 @@ import {
 	ContentColumn,
 	
 } from './ContentStyles.js';
+
+const DOMAIN = 'http://15.204.238.234:5000'
  function PayPalContent({
 	primary,
 	topLine,
@@ -43,7 +45,7 @@ import {
 				y: 0,
 			});
 		}
-		var api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/monthly_fee`)
+		var api = await fetch(`${DOMAIN}/monthly_fee`)
 		console.log(api.text)
 		api = await api.json()
 		SF(api['data_str'])

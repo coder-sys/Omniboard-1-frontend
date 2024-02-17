@@ -26,9 +26,9 @@ const get_student_ref_link = async(data)=>{
       //  return api['data']
       return api['data']
 }
-const DOMAIN = 'http://127.0.0.1:5000'
-const SD = 'http://localhost:3000'
-const SD1 = 'http://localhost:3001'
+const DOMAIN = 'http://15.204.238.234:5000'
+const SD = 'https://espark.afd.enterprises'
+const SD1 = 'https://espark-old.afd.enterprises'
 function NameList(props){
 
 	console.log(props.param)
