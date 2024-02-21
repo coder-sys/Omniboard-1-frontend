@@ -1,5 +1,5 @@
 const sign_in_function = async(fname,lname,password,email)=>{
-    let __api__ = await fetch(`http://127.0.0.1:5000/verify_sign_in_information/${email}/${fname}/${lname}`)
+    let __api__ = await fetch(`https://espark-apis.afd.enterprises/verify_sign_in_information/${email}/${fname}/${lname}`)
     __api__ = await __api__.json()
     
     let user_type = ''
@@ -14,7 +14,7 @@ const sign_in_function = async(fname,lname,password,email)=>{
       
      try{
       if(user_type == 'teacher' || user_type == 'student' ){
-    let api = await fetch(`http://127.0.0.1:5000/sign_in/${fname}/${lname}/${password}/${email}/${user_type}`)
+    let api = await fetch(`https://espark-apis.afd.enterprises/sign_in/${fname}/${lname}/${password}/${email}/${user_type}`)
     let api_json = await api.json()
     window.location.replace('http://localhost:3001/login')
     return api_json
