@@ -8,7 +8,7 @@ import FormStudentQuery from '../Form/FormStudentQuery';
 import CarouselStudentData from '../Carousel/CarouselStudentData';
 import { AdminPageContent } from '../Content/AdminPageContent';
 
-const DOMAIN = 'http://15.204.238.234:5000'
+const DOMAIN = 'https://espark-apis.afd.enterprises'
 const SD1 = 'https://espark-old.afd.enterprises'
 const HeroHomePage = (props) => {
     const [sw,setSw] = useState(100)

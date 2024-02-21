@@ -5,7 +5,7 @@ import {
     VictoryChart,
     VictoryTheme
   } from "victory";
-const DOMAIN = 'http://15.204.238.234:5000'
+const DOMAIN = 'https://espark-apis.afd.enterprises'
 function BarChartMonthlyFee(props){
     const [monthly_fee,setMF] = useState(10)
     useEffect(() => {
