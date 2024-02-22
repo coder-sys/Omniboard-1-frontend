@@ -95,7 +95,7 @@ const FormLogIn = (props) => {
 															window.location.replace(SD+'/folders/'+preapi3['email'])
 														}
 														else{
-															window.location.replace(SD1+'/homepage/'+name+"/"+ut.data)
+															window.location.replace(SD1+'/homepage/'+firstname_google+"/"+ut.data)
 															}
                   }
                   else{
