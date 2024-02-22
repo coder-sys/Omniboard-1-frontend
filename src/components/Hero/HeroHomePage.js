@@ -203,7 +203,7 @@ if(user_type=='student'){
 
     </>)
   }else{
-    window.location.replace('http://localhost:3001/errorpage/payments')
+    window.location.replace('https://espark-old.afd.enterprises/errorpage/payments')
   }
 }
   if(user_type=='adminteacherlist'){
@@ -221,7 +221,7 @@ if(user_type=='student'){
       </div>
     )}
     else{
-      window.location.replace('http://localhost:3001/errorpage')
+      window.location.replace('https://espark-old.afd.enterprises/errorpage')
 
     }
   }

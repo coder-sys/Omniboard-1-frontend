@@ -16,7 +16,7 @@ const sign_in_function = async(fname,lname,password,email)=>{
       if(user_type == 'teacher' || user_type == 'student' ){
     let api = await fetch(`https://espark-apis.afd.enterprises/sign_in/${fname}/${lname}/${password}/${email}/${user_type}`)
     let api_json = await api.json()
-    window.location.replace('http://localhost:3001/login')
+    window.location.replace('https://espark-old.afd.enterprises/login')
     return api_json
     }
     else{alert('Use school email to sign in')}
