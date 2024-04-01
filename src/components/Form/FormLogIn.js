@@ -11,12 +11,15 @@ import {
 	FormButton,
 	FormTitle,
 } from './FormStyles';
+import axios from 'axios';
 
 import {GoogleLogin} from 'react-google-login';
 import {gapi} from 'gapi-script'
 import { Container } from '../../globalStyles';
 import validateForm from './validateForm';
 import Cookies from 'js-cookie';
+import useToken from "./useToken"
+
 const DOMAIN = 'https://espark-apis.afd.enterprises'
 const SD = 'https://espark.afd.enterprises'
 const SD1 = 'https://espark-old.afd.enterprises'
@@ -33,13 +36,14 @@ const FormLogIn = (props) => {
 		Cookies.set('session_id', api['data'], { expires: 7 }); // expires in 7 days
 	  };
 	  
-	   useEffect(()=>{
+	   useEffect(async()=>{
 		function start(){
 		  gapi.auth2.init({
 			'clientId':'615921346526-8gs4b74dja97fje48tv2o459a6g7e9ns.apps.googleusercontent.com'
 		  })
 		}
 		gapi.load('client:auth2',start)
+
 	  },[])
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -70,6 +74,8 @@ const FormLogIn = (props) => {
 		},
 		
 	];
+
+	const { token, removeToken, setToken } = useToken();
     const loginwithgoogle = async(firstname_google) =>{
         
         try{
@@ -82,6 +88,8 @@ const FormLogIn = (props) => {
                     ut = await ut.json()
 					let api = await fetch(`${DOMAIN}/login/${firstname_google}`)
                   api = await api.json()
+				  setToken(api.access_token)
+				  localStorage.setItem('name', firstname_google)
                   console.log(password==api['data'])
                   if(api['data'] == "username not found"){
                     console.log('username not found')
@@ -134,6 +142,8 @@ const FormLogIn = (props) => {
 											setCookie(preapi3.email)
                                             let api = await fetch(`${DOMAIN}/login/${name}`)
                                             api = await api.json()
+											setToken(api.access_token)
+				  							localStorage.setItem('name', name)
                                             let ut = await fetch(`${DOMAIN}/get_user_type/${name}`)
                                             ut = await ut.json()
                                             console.log(ut.data)
