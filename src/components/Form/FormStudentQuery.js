@@ -26,6 +26,7 @@ const FormStudentQuery = (props) => {
 	const [results,setResults] = useState([])
 	const [updated,setUpdated] = useState(0)
 	const [opacity,setOpacity] = useState(0)
+	const [name, setName] = useState(props.name)
 	const [student_graph_data,setStudentGraphData] = useState([])
 	function loadNames(){
 		if(query!=''){
@@ -58,14 +59,28 @@ const FormStudentQuery = (props) => {
 		
 	];
    useEffect(async()=>{
+	let preapi = await fetch(`${DOMAIN}/name_to_token/${name}`)
+    preapi = await preapi.json()
+    //setToken(preapi.data)
+	let api0 = await fetch(`${DOMAIN}/get_last_name_and_email/${name}`)
+	api0 = await api0.json()
+    localStorage.setItem('email', api0['email'])
 	let select = document.getElementById('param')
 									   console.log(select[select.selectedIndex].text)
 									   setSelectedParam(select[select.selectedIndex].text)
-									   let api = await fetch(`${DOMAIN}/load_data_by_param/${select[select.selectedIndex].text}`)
+									   let api = await fetch(`${DOMAIN}/load_data_by_param/${select[select.selectedIndex].text}`,{
+										headers:{
+										  Authorization:`Bearer ${preapi.data}`
+										}
+									  })
 									   api = await api.json()
 									   console.log(api.data)
 									   setResults(api.data)								   
-let student_data_1 = await fetch(`${DOMAIN}/view_student_data_alph_order/student`)
+let student_data_1 = await fetch(`${DOMAIN}/view_student_data_alph_order/student`,{
+	headers:{
+	  Authorization:`Bearer ${preapi.data}`
+	}
+  })
 student_data_1 = await student_data_1.json()
 setStudentGraphData(student_data_1['graph_data'])
 

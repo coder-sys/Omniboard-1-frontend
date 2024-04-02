@@ -7,7 +7,7 @@ import { Content } from '../Content/Content';
 import FormStudentQuery from '../Form/FormStudentQuery';
 import CarouselStudentData from '../Carousel/CarouselStudentData';
 import { AdminPageContent } from '../Content/AdminPageContent';
-
+import useToken from '../Form/useToken';
 const DOMAIN = 'https://espark-apis.afd.enterprises'
 const SD1 = 'https://espark-old.afd.enterprises'
 const HeroHomePage = (props) => {
@@ -46,7 +46,17 @@ const [date_err,setDR] = useState(0)
   }
   
 const UE = async()=>{
-  let date_error = await fetch(`${DOMAIN}/date_subtraction_for_paid_version`)
+  let preapi = await fetch(`${DOMAIN}/name_to_token/${name}`)
+    preapi = await preapi.json()
+    //setToken(preapi.data)
+	let api0 = await fetch(`${DOMAIN}/get_last_name_and_email/${name}`)
+	api0 = await api0.json()
+    localStorage.setItem('email', api0['email'])
+  let date_error = await fetch(`${DOMAIN}/date_subtraction_for_paid_version`,{
+    headers:{
+      Authorization:`Bearer ${preapi.data}`
+    }
+  })
   date_error = await date_error.json()
   console.log('date err',date_error['data'])
   setDR(date_error['data'])
@@ -75,9 +85,19 @@ setFolderData(api1.data)
 }catch(err){console.log('you have no folders')}
 }
 const fetchData_teacher = async () =>{
+  let preapi = await fetch(`${DOMAIN}/name_to_token/${name}`)
+  preapi = await preapi.json()
+//  useToken().setToken(preapi.data)
+  let api0 = await fetch(`${DOMAIN}/get_last_name_and_email/${name}`)
+  api0 = await api0.json()
+  localStorage.setItem('email', api0['email'])
   let emailandlastname = await fetch(`${DOMAIN}/get_last_name_and_email/${name}`)
 emailandlastname = await emailandlastname.json()
-let student_data_1 = await fetch(`${DOMAIN}/view_student_data_alph_order/student`)
+let student_data_1 = await fetch(`${DOMAIN}/view_student_data_alph_order/student`,{
+  headers:{
+    Authorization:`Bearer ${preapi.data}`
+  }
+})
 student_data_1 = await student_data_1.json()
 setStudentData(student_data_1['data'])
 setStudentGraphData(student_data_1['graph_data'])
@@ -85,10 +105,25 @@ console.log(student_data_1['data'])
 
 }
 const fetchData_admin = async () =>{
-  let student_data_1 = await fetch(`${DOMAIN}/view_student_data_alph_order/student`)
+
+  let preapi = await fetch(`${DOMAIN}/name_to_token/${name}`)
+  preapi = await preapi.json()
+//  useToken().setToken(preapi.data)
+  let api0 = await fetch(`${DOMAIN}/get_last_name_and_email/${name}`)
+  api0 = await api0.json()
+  localStorage.setItem('email', api0['email'])
+  let student_data_1 = await fetch(`${DOMAIN}/view_student_data_alph_order/student`,{
+    headers:{
+      Authorization:`Bearer ${preapi.data}`
+    }
+  })
 student_data_1 = await student_data_1.json()
 setStudentGraphData(student_data_1['graph_data'])
-let student_data_2 = await fetch(`${DOMAIN}/view_student_data_alph_order/teacher`)
+let student_data_2 = await fetch(`${DOMAIN}/view_student_data_alph_order/teacher`,{
+  headers:{
+    Authorization:`Bearer ${preapi.data}`
+  }
+})
 student_data_2 = await student_data_2.json()
 console.log(student_data_2['data'])
 setTeacherData(student_data_2['data'])
@@ -137,7 +172,7 @@ if(user_type=='student'){
     }
 		</>
 	)}else{
-    window.location.replace(SD1+'/errorpage')
+    //window.location.replace(SD1+'/errorpage')
   }
 }
   if(user_type=='teacher'){
@@ -146,7 +181,7 @@ if(user_type=='student'){
     return(
       <>
 
-      <FormStudentQuery />
+      <FormStudentQuery name={name} />
       <div id={'user_carousels'}>
       {
         student_data.map((data,index)=>{
@@ -159,7 +194,7 @@ if(user_type=='student'){
       </div>
       </>
     )}else{
-      window.location.replace(SD1+'/errorpage')
+     // window.location.replace(SD1+'/errorpage')
     }
   }
 
@@ -203,7 +238,7 @@ if(user_type=='student'){
 
     </>)
   }else{
-    window.location.replace('http://localhost:3001/errorpage/payments')
+    //window.location.replace('http://localhost:3001/errorpage/payments')
   }
 }
   if(user_type=='adminteacherlist'){
@@ -221,7 +256,7 @@ if(user_type=='student'){
       </div>
     )}
     else{
-      window.location.replace('http://localhost:3001/errorpage')
+     // window.location.replace('http://localhost:3001/errorpage')
 
     }
   }
