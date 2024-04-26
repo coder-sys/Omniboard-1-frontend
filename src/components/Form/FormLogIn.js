@@ -20,7 +20,7 @@ import validateForm from './validateForm';
 import Cookies from 'js-cookie';
 import useToken from "./useToken"
 
-const DOMAIN = 'https://espark-apis.afd.enterprises'
+const DOMAIN = 'http://127.0.0.1:5000'
 const SD = 'https://espark.afd.enterprises'
 const SD1 = 'https://espark-old.afd.enterprises'
 const FormLogIn = (props) => {
@@ -76,7 +76,7 @@ const FormLogIn = (props) => {
 	];
 
 	const { token, removeToken, setToken } = useToken();
-    const loginwithgoogle = async(firstname_google) =>{
+    const loginwithgoogle = async(firstname_google,password) =>{
         
         try{
 			let preapi3 = await fetch(`${DOMAIN}/get_last_name_and_email/${firstname_google}`)
@@ -86,9 +86,17 @@ const FormLogIn = (props) => {
 			setCookie(preapi3.email)
           let ut = await fetch(`${DOMAIN}/get_user_type/${firstname_google}`)
                     ut = await ut.json()
-					let api = await fetch(`${DOMAIN}/login/${firstname_google}`)
+					let api = await fetch(`${DOMAIN}/login/`, {
+						method: 'POST',
+						headers: {
+						  'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({ first_name: firstname_google, password: password })
+					  })
                   api = await api.json()
+				  alert(api.access_token)
 				  setToken(api.access_token)
+				  
 				  localStorage.setItem('name', firstname_google)
                   console.log(password==api['data'])
                   if(api['data'] == "username not found"){
@@ -98,6 +106,7 @@ const FormLogIn = (props) => {
                   if(api['data']!='username not found'){
                     setAccess("Granted")
 					console.log(ut.data)
+					
 					
 														if(ut.data=='student'){
 															window.location.replace(SD+'/folders/'+preapi3['email'])
@@ -140,9 +149,16 @@ const FormLogIn = (props) => {
 		    								let preapi2 = await fetch(`${DOMAIN}/set_cookie/${preapi3.email}`)
 											preapi2 = await preapi2.json()
 											setCookie(preapi3.email)
-                                            let api = await fetch(`${DOMAIN}/login/${name}`)
+                                            let api = await fetch(`${DOMAIN}/login/`, {
+												method: 'POST',
+												headers: {
+												  'Content-Type': 'application/json'
+												},
+												body: JSON.stringify({ first_name: name, password: password })
+											  })
                                             api = await api.json()
-											setToken(api.access_token)
+											if(api.status===201){
+											setToken(api.access_token)}
 				  							localStorage.setItem('name', name)
                                             let ut = await fetch(`${DOMAIN}/get_user_type/${name}`)
                                             ut = await ut.json()
@@ -152,7 +168,7 @@ const FormLogIn = (props) => {
                                               console.log('username not found')
                                                 alert("username not found")
                                             }
-                                            if(password == api["data"]){
+                                            if('granted' == api["data"]){
                                               setAccess("Granted")
                                               let ut = await fetch(`${DOMAIN}/get_user_type/${name}`)
                                                         ut = await ut.json()
@@ -165,7 +181,7 @@ const FormLogIn = (props) => {
 														}
                                             }
                                             else{
-                                              alert('Incorrect Password')
+                                              alert(alert['data'])
                                             }
                                             console.log(access)
 
@@ -175,7 +191,7 @@ const FormLogIn = (props) => {
 						<FormMessage>
 						<div >	<GoogleLogin 
             clientId={'615921346526-8gs4b74dja97fje48tv2o459a6g7e9ns.apps.googleusercontent.com'}
-            onSuccess={(res)=>loginwithgoogle(res.profileObj['name'])}
+            onSuccess={(res)=>loginwithgoogle(res.profileObj['name'],res.profileObj['googleId'])}
             onFailure={(res)=>alert('had trouble logging in,please try again')}
            isSignedIn={false}
 	   buttonText={"Login with google"}
