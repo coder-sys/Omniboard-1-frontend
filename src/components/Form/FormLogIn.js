@@ -94,7 +94,6 @@ const FormLogIn = (props) => {
 						body: JSON.stringify({ first_name: firstname_google, password: password })
 					  })
                   api = await api.json()
-				  alert(api.access_token)
 				  setToken(api.access_token)
 				  
 				  localStorage.setItem('name', firstname_google)
