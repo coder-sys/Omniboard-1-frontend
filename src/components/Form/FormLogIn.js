@@ -180,7 +180,7 @@ const FormLogIn = (props) => {
 														}
                                             }
                                             else{
-                                              alert(alert['data'])
+                                              alert("Incorrect Password")
                                             }
                                             console.log(access)
 
