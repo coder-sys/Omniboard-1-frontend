@@ -16,7 +16,7 @@ import BarChartStudentEnrollment from '../BarChart/BarChartStudentEnrollment';
 
 import { Container } from '../../globalStyles';
 import validateForm from './validateForm';
-const DOMAIN = 'https://espark-apis.afd.enterprises'
+const DOMAIN = 'http://127.0.0.1:5000'
 const FormStudentQuery = (props) => {
 	const [query, setQuery] = useState('');
 	const [error, setError] = useState(null);

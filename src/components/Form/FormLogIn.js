@@ -21,8 +21,8 @@ import Cookies from 'js-cookie';
 import useToken from "./useToken"
 
 const DOMAIN = 'http://127.0.0.1:5000'
-const SD = 'https://espark.afd.enterprises'
-const SD1 = 'https://espark-old.afd.enterprises'
+const SD = 'http://localhost:3001'
+const SD1 = 'http://localhost:3000'
 const FormLogIn = (props) => {
 	const [name, setName] = useState('');
 	const [password, setPassword] = useState('');
@@ -84,8 +84,6 @@ const FormLogIn = (props) => {
 		    let preapi2 = await fetch(`${DOMAIN}/set_cookie/${preapi3.email}`)
 			preapi2 = await preapi2.json()
 			setCookie(preapi3.email)
-          let ut = await fetch(`${DOMAIN}/get_user_type/${firstname_google}`)
-                    ut = await ut.json()
 					let api = await fetch(`${DOMAIN}/login/`, {
 						method: 'POST',
 						headers: {
@@ -104,15 +102,12 @@ const FormLogIn = (props) => {
                   }
                   if(api['data']!='username not found'){
                     setAccess("Granted")
-					console.log(ut.data)
 					
 					
-														if(ut.data=='student'){
+													
 															window.location.replace(SD+'/folders/'+preapi3['email'])
-														}
-														else{
-															window.location.replace(SD1+'/homepage/'+firstname_google+"/"+ut.data)
-															}
+														
+													
                   }
                   else{
                     alert('Username not found')
@@ -169,15 +164,10 @@ const FormLogIn = (props) => {
                                             }
                                             if('granted' == api["data"]){
                                               setAccess("Granted")
-                                              let ut = await fetch(`${DOMAIN}/get_user_type/${name}`)
-                                                        ut = await ut.json()
-                                                        console.log(ut.data)
-														if(ut.data=='student'){
+                                             
+													
 															window.location.replace(SD+'/folders/'+preapi3['email'])
-														}
-														else{
-														window.location.replace(SD1+'/homepage/'+name+"/"+ut.data)
-														}
+														
                                             }
                                             else{
                                               alert("Incorrect Password")

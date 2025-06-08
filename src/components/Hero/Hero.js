@@ -11,10 +11,11 @@ const Hero = () => {
 		<HeroSection>
 			<HeroIMG src="/assets/techno.png" loop autoPlay muted />
 			<Container>
-				<MainHeading>Internet research just got easier with <i>ESPARK</i></MainHeading>
-				<HeroText>
-					We provide the best internet data research assistant tools to students out there
-				</HeroText>
+				<MainHeading>Accelerate Your Business Intelligence with <i>Omniboard</i></MainHeading>
+<HeroText>
+	Omniboard delivers powerful data research and analysis tools tailored for modern businesses and teams.
+</HeroText>
+
 				<ButtonWrapper>
 					<Link to="signup">
 						<Button>Get Started</Button>
@@ -27,13 +28,14 @@ const Hero = () => {
 		return(
 		<HeroSection>
 			<HeroVideo loop autoPlay muted>
-				<source src="/assets/hero.mp4" type="video/mp4" />
+				<source src="/assets/bg.mp4" type="video/mp4" />
 			</HeroVideo>
 			<Container>
-				<MainHeading>Internet research just got easier with <i>ESPARK</i></MainHeading>
-				<HeroText>
-					We provide the best internet data research assistant tools to students out there
-				</HeroText>
+				<MainHeading>Accelerate Your Business Intelligence with <i>Omniboard</i></MainHeading>
+<HeroText>
+	Omniboard delivers powerful data research and analysis tools tailored for modern businesses and teams.
+</HeroText>
+
 				<ButtonWrapper>
 					<Link to="signup">
 						<Button>Get Started</Button>

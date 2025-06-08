@@ -1,7 +1,7 @@
 import {PayPalButton} from 'react-paypal-button-v2'
 import React from "react";
-const DOMAIN = 'https://espark-apis.afd.enterprises'
-const SD1 = 'https://espark-old.afd.enterprises'
+const DOMAIN = 'http://127.0.0.1:5000'
+const SD1 = 'https://Omniboard-old.afd.enterprises'
 const PayPalPortal = async()=>{
     return(
 

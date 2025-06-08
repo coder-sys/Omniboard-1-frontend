@@ -24,9 +24,9 @@ const save_google_data = async(setue,data,update_effect,linkjoin_,retrievegoogle
         stored_data[index] = true
 
     try{    
-    let eal = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_last_name_and_email/${name}`)
+    let eal = await fetch(`https://Omniboard-apis-tndx3hr7aq-uc.a.run.app/get_last_name_and_email/${name}`)
     eal = await eal.json()
-        let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/add_google_content/${name+lastname+email}/${foldername}/${djoin_.join("")}/${linkjoin_.join("")}/${description[index]}`)
+        let api = await fetch(`https://Omniboard-apis-tndx3hr7aq-uc.a.run.app/add_google_content/${name+lastname+email}/${foldername}/${djoin_.join("")}/${linkjoin_.join("")}/${description[index]}`)
         api = await api.json()
         console.log(api)
     }

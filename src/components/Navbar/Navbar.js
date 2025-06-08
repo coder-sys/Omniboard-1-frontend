@@ -27,10 +27,11 @@ const Navbar = (props) => {
 
 	const scrollTo = (id) => {
 		const element = document.getElementById(id);
-
-		element.scrollIntoView({
-			behavior: 'smooth',
-		});
+		if (element) {
+			element.scrollIntoView({
+				behavior: 'smooth',
+			});
+		}
 	};
 
 	const closeMobileMenu = (to, id) => {
@@ -48,7 +49,7 @@ const Navbar = (props) => {
 					
 					<NavLogo to="/">
 						<NavIcon style={{width:'100px',height:'75px',borderRadius:'10px'}} src={'/assets/afdenterpriseslogoregular.PNG'} />
-						<div style={{'color':'silver'}}><b>ESPARK</b></div>
+						<div style={{'color':'silver'}}><b>Omniboard</b></div>
 					</NavLogo>
 					<MobileIcon onClick={handleClick}>
 						{show ? <FaTimes /> : <CgMenuRight />}

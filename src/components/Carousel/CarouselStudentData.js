@@ -13,7 +13,7 @@ import {
 
 	 
 	
-const SD = 'https://espark.afd.enterprises'
+const SD = 'https://Omniboard.afd.enterprises'
 const CarouselStudentData = (props) => {
 	const [sliderRef, setSliderRef] = useState(null);
 	const [show,setShow] = useState(true)

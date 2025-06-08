@@ -71,7 +71,7 @@ const FormFolderContentYouTube = (props) => {
                        props.setUpdated(props.updated+1)
                        props.setue(props.update_effect+1)
        
-                       let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_youtube_data/${props.youtubesearch}`)
+                       let api = await fetch(`https://Omniboard-apis-tndx3hr7aq-uc.a.run.app/get_youtube_data/${props.youtubesearch}`)
                        api = await api.json()
                        props.setyoutubeAPITitles(api.titles)
                        props.setyoutubeAPILinks(api.link)
@@ -81,8 +81,8 @@ const FormFolderContentYouTube = (props) => {
                         props.translateLink(props.linkarray).then(async(data1)=>{
                                try{
                                console.log(data,data1)
-                               console.log(`https://espark-apis-tndx3hr7aq-uc.a.run.app/find_similarity_links/${data.join()}/${data1.join()}`)
-                               let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/find_similarity_links/${data.join()}/${data1.join()}`)
+                               console.log(`https://Omniboard-apis-tndx3hr7aq-uc.a.run.app/find_similarity_links/${data.join()}/${data1.join()}`)
+                               let api = await fetch(`https://Omniboard-apis-tndx3hr7aq-uc.a.run.app/find_similarity_links/${data.join()}/${data1.join()}`)
                                api = await api.json()
                                props.setStoredDataYT(api.data)}catch(err){console.log(err)}
                        })

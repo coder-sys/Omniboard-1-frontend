@@ -14,6 +14,7 @@ import HomePage from './pages/HomePage';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import FolderContent from './pages/FolderContent';
 import Payments from './pages/Payments';
+import Nucleus from './pages/Nucleus';
 function App() {
 	return (
 		<Router>
@@ -27,6 +28,7 @@ function App() {
 				<Route path='/homepage/:name/:ut' exact component={HomePage} />
 				<Route path='/foldercontent/:uname/:foldername/:ut' exact component={FolderContent} />
 				<Route path='/payments' exact component={Payments} />
+				<Route path='/nucleus' exact component={Nucleus} />
 				<Route path='/errorpage' exact component={ErrorContent} />
 				<Route path='/errorpage' exact component={ErrorContent} />
 

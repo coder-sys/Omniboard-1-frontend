@@ -12,4 +12,9 @@ export const data = [
 		to: '/signup',
 		text: 'Sign Up',
 	},
+	{
+		to: '/nucleus',
+		text: 'Nucleus',
+		id: 'Nucleus',
+	},
 ];

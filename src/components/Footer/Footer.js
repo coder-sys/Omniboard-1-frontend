@@ -23,7 +23,7 @@ function Footer() {
 					<FooterColumn id="footerLogo">
 						<FooterLogo to="/">
 							<SocialIcon  />
-							ESPARK
+							Omniboard
 						</FooterLogo>
 						<FooterAddress>
 							9870 broadmoor dr, San Ramon, CA 94583

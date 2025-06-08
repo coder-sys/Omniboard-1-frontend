@@ -31,7 +31,7 @@ const save_youtube_data = async(setue,update_effect,youtubeAPILinks,youtubeAPITi
                                     console.log(ytlinkjoin_)
                                     console.log('link is '+ytlinkjoin_.join("").split('=')[1])
                                     try{
-      let emailandlastname = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_last_name_and_email/${name}`)
+      let emailandlastname = await fetch(`https://Omniboard-apis-tndx3hr7aq-uc.a.run.app/get_last_name_and_email/${name}`)
       emailandlastname = await emailandlastname.json()
                 console.log(thumbnail[index])
                 let yttitlejoin = []
@@ -45,7 +45,7 @@ const save_youtube_data = async(setue,update_effect,youtubeAPILinks,youtubeAPITi
                     
                 })
                 
-                                    let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/add_youtube_content/${name+emailandlastname['lastname']+emailandlastname['email']}/${foldername}/${yttitlejoin.join('')}/${ytlinkjoin_.join("").split('=')[1]}/${thumbnailjoin_.join('')}`)
+                                    let api = await fetch(`https://Omniboard-apis-tndx3hr7aq-uc.a.run.app/add_youtube_content/${name+emailandlastname['lastname']+emailandlastname['email']}/${foldername}/${yttitlejoin.join('')}/${ytlinkjoin_.join("").split('=')[1]}/${thumbnailjoin_.join('')}`)
                                     api = await api.json()
                                     console.log(api)}catch(err){alert('could not save source')}
                                    }

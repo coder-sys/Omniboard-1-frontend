@@ -8,8 +8,8 @@ import FormStudentQuery from '../Form/FormStudentQuery';
 import CarouselStudentData from '../Carousel/CarouselStudentData';
 import { AdminPageContent } from '../Content/AdminPageContent';
 import useToken from '../Form/useToken';
-const DOMAIN = 'https://espark-apis.afd.enterprises'
-const SD1 = 'https://espark-old.afd.enterprises'
+const DOMAIN = 'http://127.0.0.1:5000'
+const SD1 = 'https://Omniboard-old.afd.enterprises'
 const HeroHomePage = (props) => {
     const [sw,setSw] = useState(100)
 const [hw,setHw] = useState(50)
@@ -238,7 +238,7 @@ if(user_type=='student'){
 
     </>)
   }else{
-    window.location.replace('https://espark-old.afd.enterprises/errorpage/payments')
+    window.location.replace('https://Omniboard-old.afd.enterprises/errorpage/payments')
     //window.location.replace('http://localhost:3001/errorpage/payments')
   }
 }
@@ -257,7 +257,7 @@ if(user_type=='student'){
       </div>
     )}
     else{
-      window.location.replace('https://espark-old.afd.enterprises/errorpage')
+      window.location.replace('https://Omniboard-old.afd.enterprises/errorpage')
      // window.location.replace('http://localhost:3001/errorpage')
 
     }

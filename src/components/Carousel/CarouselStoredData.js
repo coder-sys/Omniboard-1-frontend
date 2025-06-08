@@ -23,7 +23,7 @@ const CarouselStoredData = (props) => {
 				<Heading width="auto" inverse>
 					{props.SDoM}
 				</Heading>
-				<a href={`https://espark-afd-enterprises.uc.r.appspot.com/homepage/${props.name}/${props.ut}`}><div><b><i>BACK</i></b></div></a>
+				<a href={`https://Omniboard-afd-enterprises.uc.r.appspot.com/homepage/${props.name}/${props.ut}`}><div><b><i>BACK</i></b></div></a>
 				<ButtonContainer>
 					<IconContext.Provider value={{ size: '3rem', color: '#1d609c' }}>
 						<div style={{opacity:0}}>
@@ -63,9 +63,9 @@ const CarouselStoredData = (props) => {
 			</TextWrapper>
 			<TextWrapper>
 			<CardButton onClick={async()=>{ 
-                        let emailandlastname = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_last_name_and_email/${props.name}`)
+                        let emailandlastname = await fetch(`https://Omniboard-apis-tndx3hr7aq-uc.a.run.app/get_last_name_and_email/${props.name}`)
                         emailandlastname = await emailandlastname.json()
-                        let api= await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/delete_saved_data/${props.name+emailandlastname['lastname']+emailandlastname['email']}/${props.foldername}/${data['name']}`)
+                        let api= await fetch(`https://Omniboard-apis-tndx3hr7aq-uc.a.run.app/delete_saved_data/${props.name+emailandlastname['lastname']+emailandlastname['email']}/${props.foldername}/${data['name']}`)
                         api = await api.json()
                         props.setue(props.update_effect+1)
             }}
@@ -93,9 +93,9 @@ const CarouselStoredData = (props) => {
 
 			<TextWrapper>
 			<CardButton onClick={async()=>{ 
-                        let emailandlastname = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/get_last_name_and_email/${props.name}`)
+                        let emailandlastname = await fetch(`https://Omniboard-apis-tndx3hr7aq-uc.a.run.app/get_last_name_and_email/${props.name}`)
                         emailandlastname = await emailandlastname.json()
-                        let api= await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/delete_saved_data/${props.name+emailandlastname['lastname']+emailandlastname['email']}/${props.foldername}/${data['name']}`)
+                        let api= await fetch(`https://Omniboard-apis-tndx3hr7aq-uc.a.run.app/delete_saved_data/${props.name+emailandlastname['lastname']+emailandlastname['email']}/${props.foldername}/${data['name']}`)
                         api = await api.json()
                         props.setue(props.update_effect+1)
             }}

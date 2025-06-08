@@ -18,7 +18,7 @@ import { Container } from '../../globalStyles';
 import validateForm from './validateForm';
 import sign_in_function from '../../functions/sign_in_function';
 const DOMAIN = 'http://127.0.0.1:5000'
-const SD1 = 'https://espark-old.afd.enterprises'
+const SD1 = 'http://localhost:3000'
 const FormSignIn = () => {
 	const [name, setName] = useState('');
 	const [lname, setLname] = useState('')
@@ -33,20 +33,22 @@ const FormSignIn = () => {
 	  let user_type = ''
 	  let disected_address = __email__.split('@')[1]
 	  console.log(disected_address)
+	  let white_list = await fetch(`${DOMAIN}/whitelisted_domains`)
+	  white_list = await white_list.json()
+	  white_list = white_list['data']
+
 	  if(__api__['data'] == 'good to go!'){
-		if(disected_address == 'k12.prosper-isd.net' || disected_address == 'students.srvusd.net'){
 		  user_type = 'student'
-		}
-		if(disected_address == 'prosper-isd.net' || disected_address == 'srvusd.net'){
+		
 		  user_type = 'teacher'
-		}
-		if(user_type == 'teacher' || user_type == 'student'){
-			let api = await fetch(`${DOMAIN}/sign_in/${firstname}/${lastname}/${__password__}/${__email__}/${user_type}`)
+
+		if(white_list.includes(disected_address)){
+			let api = await fetch(`${DOMAIN}/sign_in/${firstname}/${lastname}/${__password__}/${__email__}`)
 			let api_json = await api.json()
 			window.location.replace(SD1+'/login')
 			return api_json
 			}
-			else{alert('Use school email to sign in')}
+			else{alert('Use company email to sign in')}
 			 
 		  
 			}     else{  

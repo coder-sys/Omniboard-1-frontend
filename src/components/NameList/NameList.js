@@ -21,14 +21,14 @@ import {
 const get_student_ref_link = async(data)=>{
     //homepage redirect
     
-        let api = await fetch(`https://espark-apis-tndx3hr7aq-uc.a.run.app/email_to_firstname/${data}`)
+        let api = await fetch(`https://Omniboard-apis-tndx3hr7aq-uc.a.run.app/email_to_firstname/${data}`)
         api = await api.json()
       //  return api['data']
       return api['data']
 }
-const DOMAIN = 'https://espark-apis.afd.enterprises'
-const SD = 'https://espark.afd.enterprises'
-const SD1 = 'https://espark-old.afd.enterprises'
+const DOMAIN = 'http://127.0.0.1:5000'
+const SD = 'https://Omniboard.afd.enterprises'
+const SD1 = 'https://Omniboard-old.afd.enterprises'
 function NameList(props){
 
 	console.log(props.param)
