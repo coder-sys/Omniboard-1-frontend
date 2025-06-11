@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Container, MainHeading } from '../globalStyles';
 
 const Nucleus = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [ownerName, setOwnerName] = useState('');
-  const [description, setDescription] = useState('');
+  const [companyDomain, setCompanyDomain] = useState('');
   const [teamsFile, setTeamsFile] = useState(null);
   const [usersFile, setUsersFile] = useState(null);
-  const [companyDomain, setCompanyDomain] = useState('');
+  const [description, setDescription] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
 
@@ -24,8 +24,8 @@ const Nucleus = () => {
       setError('Please enter a valid email address.');
       return;
     }
-    if (!ownerName) {
-      setError('Please enter the business owner name.');
+    if (!name) {
+      setError('Please enter your name.');
       return;
     }
     if (!companyDomain) {
@@ -42,18 +42,16 @@ const Nucleus = () => {
     }
     // Prepare form data
     const formData = new FormData();
-    formData.append('ownerName', ownerName);
+    formData.append('name', name);
     formData.append('email', email);
+    formData.append('companyDomain', companyDomain);
     formData.append('description', description);
-    // Remove file uploads for free Formspree
-    // formData.append('teams', teamsFile);
-    // formData.append('users', usersFile);
-    formData.append('teamsFileName', teamsFile ? teamsFile.name : '');
-    formData.append('usersFileName', usersFile ? usersFile.name : '');
+    formData.append('teamsFile', teamsFile); // Include the actual file data
+    formData.append('usersFile', usersFile); // Include the actual file data
 
     // Send to backend API (should be configured to email you)
     try {
-      await fetch('https://formspree.io/f/xqabpeav', {
+      await fetch('https://usebasin.com/f/46e0a1bd3e8b', {
         method: 'POST',
         body: formData,
         headers: {
@@ -139,18 +137,18 @@ const Nucleus = () => {
           ) : (
             <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: 440, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 24, boxSizing: 'border-box' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-                <label style={{ fontWeight: 700, color: '#312e81', marginBottom: 2, fontSize: 15 }}>Business Owner Name</label>
+                <label style={{ fontWeight: 700, color: '#312e81', marginBottom: 2, fontSize: 15 }}>Name</label>
                 <input
                   type="text"
-                  value={ownerName}
-                  onChange={e => setOwnerName(e.target.value)}
+                  value={name}
+                  onChange={e => setName(e.target.value)}
                   placeholder="Enter your full name"
                   style={{ padding: '15px 16px', borderRadius: 12, border: '2px solid #cbd5e1', fontSize: 16, width: '100%', maxWidth: 400, background: '#f1f5f9', outline: 'none', fontWeight: 500, transition: 'border 0.2s, box-shadow 0.2s', boxShadow: '0 1px 4px #e0e7ff', marginBottom: 2, boxSizing: 'border-box' }}
                   required
                   onFocus={e => e.target.style.border = '2px solid #6366F1'}
                   onBlur={e => e.target.style.border = '2px solid #cbd5e1'}
                 />
-                <label style={{ fontWeight: 700, color: '#312e81', marginBottom: 2, fontSize: 15 }}>Business Owner Email</label>
+                <label style={{ fontWeight: 700, color: '#312e81', marginBottom: 2, fontSize: 15 }}>Email</label>
                 <input
                   type="email"
                   value={email}
@@ -161,7 +159,7 @@ const Nucleus = () => {
                   onFocus={e => e.target.style.border = '2px solid #6366F1'}
                   onBlur={e => e.target.style.border = '2px solid #cbd5e1'}
                 />
-                <label style={{ fontWeight: 700, color: '#312e81', marginBottom: 2, fontSize: 15 }}>Company Email Domain Name</label>
+                <label style={{ fontWeight: 700, color: '#312e81', marginBottom: 2, fontSize: 15 }}>Company Email Domain</label>
                 <input
                   type="text"
                   value={companyDomain}
@@ -175,13 +173,13 @@ const Nucleus = () => {
               </div>
               <div style={{ display: 'flex', flexDirection: 'row', gap: 18 }}>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                  <label style={{ fontWeight: 700, color: '#312e81', marginBottom: 2, fontSize: 15 }}>Teams Spreadsheet <span style={{ color: '#64748b', fontWeight: 400 }}>(.csv only)</span></label>
+                  <label style={{ fontWeight: 700, color: '#312e81', marginBottom: 2, fontSize: 15 }}>Teams CSV File <span style={{ color: '#64748b', fontWeight: 400 }}>(.csv only)</span></label>
                   <input type="file" accept=".csv" onChange={handleFileChange(setTeamsFile)} style={{ marginBottom: 2, background: '#f1f5f9', borderRadius: 10, border: '2px solid #cbd5e1', padding: 8, fontSize: 15, transition: 'border 0.2s', boxShadow: '0 1px 4px #e0e7ff', maxWidth: 400, width: '100%', boxSizing: 'border-box' }} required />
                   <span style={{ fontSize: 13, color: '#64748b' }}>Required columns: <b>Team ID</b>, <b>Team Name</b>, <b>Product Owner</b>, <b>Project Manager</b></span>
                   <span style={{ fontSize: 12, color: '#64748b' }}>Example: <code>101,Data Science,Jane Doe,John Smith</code></span>
                 </div>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                  <label style={{ fontWeight: 700, color: '#312e81', marginBottom: 2, fontSize: 15 }}>Users Spreadsheet <span style={{ color: '#64748b', fontWeight: 400 }}>(.csv only)</span></label>
+                  <label style={{ fontWeight: 700, color: '#312e81', marginBottom: 2, fontSize: 15 }}>Users CSV File <span style={{ color: '#64748b', fontWeight: 400 }}>(.csv only)</span></label>
                   <input type="file" accept=".csv" onChange={handleFileChange(setUsersFile)} style={{ marginBottom: 2, background: '#f1f5f9', borderRadius: 10, border: '2px solid #cbd5e1', padding: 8, fontSize: 15, transition: 'border 0.2s', boxShadow: '0 1px 4px #e0e7ff', maxWidth: 400, width: '100%', boxSizing: 'border-box' }} required />
                   <span style={{ fontSize: 13, color: '#64748b' }}>Required columns: <b>ID</b>, <b>Username</b>, <b>Profile Picture</b></span>
                   <span style={{ fontSize: 12, color: '#64748b' }}>Example: <code>1,janedoe,janedoe.png</code></span>
